@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Task 04 - HTML Form</title>
+</head>
+<body>
+
+    <form action="#" method="post">
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <p>
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name"> [cite: 20]
+            </p>
+
+            <p>
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email"> [cite: 21]
+            </p>
+
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"> [cite: 22]
+            </p>
+
+            <p>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob"> [cite: 23]
+            </p>
+
+            <p>
+                <label>Gender:</label> [cite: 24]
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Academic Information</legend>
+
+            <p>
+                <label for="department">Department:</label> [cite: 26]
+                <select id="department" name="department">
+                    <option value="">Select Department</option>
+                    <option value="cse">CSE</option>
+                    <option value="eee">EEE</option>
+                    <option value="bba">BBA</option>
+                </select>
+            </p>
+
+            <p>
+                <label>Skills:</label> [cite: 27]
+                <input type="checkbox" id="skill1" name="skills" value="html">
+                <label for="skill1">HTML</label>
+                <input type="checkbox" id="skill2" name="skills" value="css">
+                <label for="skill2">CSS</label>
+                <input type="checkbox" id="skill3" name="skills" value="js">
+                <label for="skill3">JavaScript</label>
+            </p>
+        </fieldset>
+
+        <p>
+            <input type="submit" value="Submit"> [cite: 38]
+            <input type="reset" value="Reset"> [cite: 39]
+        </p>
+
+    </form>
+
+</body>
+</html>
