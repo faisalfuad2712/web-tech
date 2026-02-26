@@ -1,0 +1,106 @@
+/* 1. Body Styling */
+[cite_start]body { /* [cite: 1] */
+    font-family: Arial, sans-serif; [cite_start]/* [cite: 3] */
+    background-color: #f3f6f9; [cite_start]/* [cite: 4] */
+    display: flex; [cite_start]/* [cite: 4] */
+    justify-content: center; [cite_start]/* [cite: 5] */
+    align-items: center; [cite_start]/* [cite: 6] */
+    height: 100vh; [cite_start]/* [cite: 7] */
+    margin: 0; [cite_start]/* [cite: 8] */
+}
+
+/* 2. Form Container */
+[cite_start]form { /* [cite: 16] */
+    background-color: #fff; [cite_start]/* [cite: 18] */
+    padding: 25px 35px; [cite_start]/* [cite: 19] */
+    border-radius: 10px; [cite_start]/* [cite: 20] */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); [cite_start]/* [cite: 21] */
+    width: 350px; [cite_start]/* [cite: 22] */
+}
+
+/* 3. Form Header */
+[cite_start]h2 { /* [cite: 29] */
+    text-align: center; [cite_start]/* [cite: 30] */
+    color: #333; [cite_start]/* [cite: 31] */
+    margin-bottom: 20px; [cite_start]/* [cite: 33] */
+}
+
+/* 4. Labels and inputs */
+[cite_start]label { /* [cite: 38] */
+    display: block; [cite_start]/* [cite: 40] */
+    margin-bottom: 6px; [cite_start]/* [cite: 41] */
+    color: #333; [cite_start]/* [cite: 42] */
+    font-weight: bold; [cite_start]/* [cite: 43] */
+}
+
+[cite_start]input[type="text"], /* [cite: 44] */
+[cite_start]input[type="email"], /* [cite: 45] */
+[cite_start]input[type="password"], /* [cite: 46] */
+[cite_start]input[type="date"], /* [cite: 47] */
+[cite_start]select { /* [cite: 48] */
+    width: 100%; [cite_start]/* [cite: 50] */
+    padding: 8px 10px; [cite_start]/* [cite: 51] */
+    margin-bottom: 15px; [cite_start]/* [cite: 52] */
+    border: 1px solid #ccc; [cite_start]/* [cite: 53] */
+    border-radius: 5px; [cite_start]/* [cite: 54] */
+    font-size: 14px; [cite_start]/* [cite: 55] */
+    box-sizing: border-box; [cite_start]/* [cite: 56] */
+}
+
+/* 5. Radio Buttons (Gender Group) */
+[cite_start].gender-group { /* [cite: 65] */
+    margin-bottom: 15px; [cite_start]/* [cite: 67] */
+}
+
+[cite_start].gender-group input[type="radio"] { /* [cite: 68] */
+    margin-right: 5px; [cite_start]/* [cite: 70] */
+}
+
+[cite_start].gender-group label { /* [cite: 71] */
+    display: inline-block; [cite_start]/* [cite: 73] */
+    margin-right: 15px; [cite_start]/* [cite: 74] */
+    font-weight: normal; [cite_start]/* [cite: 75] */
+}
+
+/* 6. Checkbox (Terms Section) */
+[cite_start].terms { /* [cite: 79] */
+    display: flex; [cite_start]/* [cite: 81] */
+    align-items: center; [cite_start]/* [cite: 82] */
+    margin-bottom: 15px; [cite_start]/* [cite: 83] */
+    font-weight: normal; [cite_start]/* [cite: 84] */
+}
+
+[cite_start].terms input[type="checkbox"] { /* [cite: 85] */
+    margin-right: 8px; [cite_start]/* [cite: 87] */
+}
+
+/* 7. Submit Button */
+[cite_start]button { /* [cite: 92] */
+    width: 100%; [cite_start]/* [cite: 93] */
+    padding: 10px; [cite_start]/* [cite: 94] */
+    background-color: #007BFF; [cite_start]/* [cite: 95] */
+    color: white; [cite_start]/* [cite: 96] */
+    border: none; [cite_start]/* [cite: 97] */
+    border-radius: 5px; [cite_start]/* [cite: 98] */
+    font-size: 16px; [cite_start]/* [cite: 99] */
+    cursor: pointer; [cite_start]/* [cite: 101] */
+    transition: background-color 0.3s; [cite_start]/* [cite: 102] */
+}
+
+[cite_start]button:hover { /* [cite: 103] */
+    background-color: #0056b3; [cite_start]/* [cite: 105] */
+}
+
+/* 8. Input Focus Effect */
+[cite_start]input:focus, select:focus { /* [cite: 112] */
+    outline: none; [cite_start]/* [cite: 114] */
+    border-color: #007BFF; [cite_start]/* [cite: 115] */
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3); [cite_start]/* [cite: 116] */
+}
+
+/* 9. Responsive Design */
+[cite_start]@media (max-width: 400px) { /* [cite: 120] */
+    [cite_start]form { /* [cite: 121] */
+        width: 90%; [cite_start]/* [cite: 123] */
+    }
+}
