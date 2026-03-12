@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Fuad | Software Developer Portfolio</title>
+    <meta name="author" content="Fuad">
+    <meta name="description" content="Portfolio of Fuad, a CS student passionate about programming and networking.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Modern Dark Theme Color Palette */
+        :root {
+            --bg-color: #0f172a; /* Deep Navy */
+            --card-bg: #1e293b;
+            --primary-accent: #38bdf8; /* Neon Blue */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* Glassmorphism Header */
+        header { 
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem; 
+            text-align: center; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav { margin-top: 15px; }
+
+        nav a { 
+            color: var(--text-main); 
+            margin: 0 20px; 
+            text-decoration: none; 
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        /* Main Container Layout */
+        main { 
+            padding: 60px 20px; 
+            max-width: 900px; 
+            margin: auto; 
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Modern Sections */
+        section { 
+            background: var(--card-bg);
+            margin-bottom: 50px; 
+            padding: 40px; 
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        h2 {
+            color: var(--text-main);
+            font-size: 2rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2::after {
+            content: "";
+            height: 2px;
+            flex: 1;
+            background: linear-gradient(90deg, var(--primary-accent), transparent);
+        }
+
+        /* --- Hero / About Section --- */
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text { flex: 1; }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .hero-text strong { color: var(--text-main); }
+
+        .hero-image {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            transition: transform 0.4s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* --- Skills Section (New) --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .skill-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary-accent);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: var(--primary-accent);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* --- Table Styling --- */
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        thead {
+            background-color: rgba(0,0,0,0.2);
+        }
+
+        th, td { 
+            padding: 18px; 
+            text-align: left; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        th { color: var(--primary-accent); }
+        td { color: var(--text-muted); }
+
+        tbody tr:hover {
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        /* --- Form Styling --- */
+        form { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px;
+        }
+
+        input, textarea { 
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px; 
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+            background: rgba(0,0,0,0.4);
+        }
+
+        button { 
+            background: var(--primary-accent); 
+            color: var(--bg-color); 
+            border: none; 
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0ea5e9;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer { 
+            text-align: center; 
+            padding: 30px; 
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-image img { width: 200px; height: 200px; }
+            h2::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Fuad</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section id="about">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h2>Hello, I'm Fuad</h2>
+                    <p>
+                        A dedicated <strong>Computer Science student</strong> at American University. 
+                        I am passionate about software engineering, system architecture, and modern web development. 
+                        Currently looking for an internship to apply my theoretical knowledge to real-world impactful projects.
+                    </p>
+                </div>
+                <div class="hero-image">
+                    <img src="https://i.postimg.cc/k4rnk9g4/248af471-021f-4777-a95d-f60ddcc6956d.jpg">
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Technologies and concepts I am currently working with:</p>
+            <div class="skills-grid">
+                <span class="skill-badge">C / C++</span>
+                <span class="skill-badge">HTML & CSS</span>
+                <span class="skill-badge">Computer Networking</span>
+                <span class="skill-badge">Operating Systems</span>
+                <span class="skill-badge">MATLAB</span>
+                <span class="skill-badge">R (Data Analysis)</span>
+                <span class="skill-badge">MIS</span>
+                <span class="skill-badge">Linux CLI</span>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Degree</th>
+                        <th>Institution</th>
+                        <th>Year</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B.Sc. in Computer Science</td>
+                        <td>American University</td>
+                        <td>2022 - Present</td>
+                        <td>In Progress</td>
+                    </tr>
+                    <tr>
+                        <td>Higher Secondary Certificate</td>
+                        <td>Dhaka City College</td>
+                        <td>2021</td>
+                        <td>Completed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Interested in collaborating or hiring me for an internship? Drop a message below.</p>
+            
+            <form action="#" method="POST">
+                <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+                <textarea id="message" name="message" rows="5" placeholder="How can I help you?" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Fuad. Built with passion and code.</p>
+    </footer>
+
+</body>
+</html>
