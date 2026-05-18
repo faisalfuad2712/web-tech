@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Faisal Ahmed Fuad | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="site-header">
+
+    <nav class="nav-container">
+
+      <div class="nav-logo">
+        F<span class="accent">.</span>F
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+
+        <button class="theme-toggle" id="theme-toggle">
+          <span id="theme-icon">☀</span>
+        </button>
+
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </nav>
+
+    <!-- Mobile Menu -->
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#projects" class="mobile-link">Projects</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section id="home" class="section hero-section">
+
+    <div class="hero-grid-bg"></div>
+
+    <div class="hero-content">
+
+      <p class="hero-eyebrow">
+        CSE STUDENT · AIUB
+      </p>
+
+      <h1 class="hero-name">
+        <span class="hero-first">FAISAL AHMED</span>
+        <span class="hero-last">FUAD</span>
+      </h1>
+
+      <p class="hero-tagline">
+        I build
+        <span class="typed-wrapper">
+          <span id="typed-text" class="typed-text"></span>
+          <span class="typed-cursor">|</span>
+        </span>
+      </p>
+
+      <p class="hero-intro">
+        Passionate about creating modern web applications,
+        beautiful user interfaces, and smart software experiences.
+      </p>
+
+      <div class="hero-cta">
+
+        <a href="#projects" class="btn btn-primary">
+          View My Work
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          Contact Me
+        </a>
+
+      </div>
+
+      <div class="hero-stats">
+
+        <div class="stat">
+          <span class="stat-num">3+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat">
+          <span class="stat-num">2+</span>
+          <span class="stat-label">Years Coding</span>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Technologies</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- HERO VISUAL -->
+
+    <div class="hero-visual">
+
+      <div class="avatar-ring">
+
+        <div class="avatar-inner">
+          <div class="avatar-initials">FF</div>
+        </div>
+
+        <div class="orbit orbit-1">
+          <div class="orbit-dot"></div>
+        </div>
+
+        <div class="orbit orbit-2">
+          <div class="orbit-dot"></div>
+        </div>
+
+      </div>
+
+      <div class="skill-tags">
+
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">MySQL</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects" class="section projects-section">
+
+    <div class="section-header">
+
+      <span class="section-label">
+        02 — FEATURED WORK
+      </span>
+
+      <h2 class="section-title">
+        Projects
+      </h2>
+
+      <p class="section-sub">
+        Some projects I've worked on.
+      </p>
+
+    </div>
+
+    <div class="filter-bar" id="filter-bar">
+
+      <button class="filter-btn active" data-filter="all">
+        All
+      </button>
+
+      <button class="filter-btn" data-filter="game">
+        Game
+      </button>
+
+      <button class="filter-btn" data-filter="app">
+        Desktop App
+      </button>
+
+    </div>
+
+    <div class="projects-grid" id="projects-grid"></div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="section contact-section">
+
+    <div class="section-header">
+
+      <span class="section-label">
+        03 — CONTACT
+      </span>
+
+      <h2 class="section-title">
+        Contact Me
+      </h2>
+
+    </div>
+
+    <div class="contact-layout">
+
+      <div class="contact-info">
+
+        <div class="contact-item">
+
+          <span class="contact-icon">✉</span>
+
+          <div>
+            <p class="contact-item-label">Email</p>
+            <p class="contact-item-value">
+              faisalAhmedfuad@gmail.com
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FORM -->
+
+      <form class="contact-form" id="contact-form">
+
+        <div class="form-row">
+
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="name">
+            <span class="form-error" id="name-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email">
+            <span class="form-error" id="email-error"></span>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" id="subject">
+          <span class="form-error" id="subject-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="message"></textarea>
+          <span class="form-error" id="message-error"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+
+          <span id="btn-text">
+            Send Message
+          </span>
+
+          <span id="btn-sending" class="hidden">
+            Sending...
+          </span>
+
+        </button>
+
+        <div class="form-success hidden" id="form-success">
+          ✓ Message sent successfully!
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <p class="footer-copy">
+        © 2026 Faisal Ahmed Fuad
+      </p>
+
+      <p class="footer-made">
+        Built with HTML, CSS & JS
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- Scroll Button -->
+
+  <button class="scroll-top" id="scroll-top">
+    ↑
+  </button>
+
+  <!-- External JS -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
