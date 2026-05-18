@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List DOM Practice</title>
+    <link rel="stylesheet" href="dom.css">
+</head>
+<body>
+    <h1>Student List</h1>
+ 
+    <!-- Student Form -->
+    <form id="student-form">
+        <label for="student-roll">Roll No:</label>
+        <input type="text" id="student-roll" placeholder="Enter roll number">
+
+        <label for="student-name">Student Name:</label>
+        <input type="text" id="student-name" placeholder="Enter student name">
+
+        <button type="submit" id="add-button" disabled>Add Student</button>
+    </form>
+
+    <!-- Search Student -->
+    <input type="text" id="search-student" placeholder="Search student...">
+ 
+    <!-- Student List -->
+    <ul id="student-list">
+    </ul>
+
+    <!-- Total Student Count -->
+    <p id="student-count">Total students: 0</p>
+ 
+<script>
+
+// Enable/Disable Add button when typing
+document.getElementById('student-name').addEventListener('input', toggleAddButton);
+
+function toggleAddButton() {
+    let nameInput = document.getElementById('student-name').value;
+    let addButton = document.getElementById('add-button');
+
+    if (nameInput.trim() === '') {
+        addButton.disabled = true;
+    } else {
+        addButton.disabled = false;
+    }
+}
+
+// Search/filter students
+document.getElementById('search-student').addEventListener('input', filterStudents);
+
+function filterStudents() {
+
+    let searchText = document.getElementById('search-student').value.toLowerCase();
+    let students = document.querySelectorAll('.student-item');
+
+    students.forEach(student => {
+
+        let studentText = student.querySelector('span').textContent.toLowerCase();
+
+        if (studentText.includes(searchText)) {
+            student.style.display = '';
+        } else {
+            student.style.display = 'none';
+        }
+
+    });
+}
+
+
+// 1. Event listener for form submission
+document.getElementById('student-form').addEventListener('submit', addStudent);
+ 
+// 2. Add student function
+function addStudent(event) {
+    event.preventDefault();
+ 
+    let studentRoll = document.getElementById('student-roll').value;
+    let studentName = document.getElementById('student-name').value;
+ 
+    if (studentRoll === '' || studentName === '') {
+        alert('Please enter roll number and student name');
+        return;
+    }
+ 
+    let li = document.createElement('li');
+    li.classList.add('student-item');
+ 
+    let span = document.createElement('span');
+    span.textContent = studentRoll + " – " + studentName;
+ 
+    let editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.classList.add('btn-edit');
+    editButton.addEventListener('click', function () {
+        editStudent(li, span);
+    });
+ 
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add('btn-delete');
+    deleteButton.addEventListener('click', function () {
+        deleteStudent(li);
+    });
+ 
+    li.appendChild(span);
+    li.appendChild(editButton);
+    li.appendChild(deleteButton);
+ 
+    document.getElementById('student-list').appendChild(li);
+ 
+    updateStudentCount();
+
+    document.getElementById('student-roll').value = '';
+    document.getElementById('student-name').value = '';
+
+    document.getElementById('add-button').disabled = true;
+}
+ 
+// Delete a student
+function deleteStudent(studentElement) {
+    studentElement.remove();
+    updateStudentCount();
+}
+ 
+// Edit student
+function editStudent(studentElement, studentNameElement) {
+
+    let currentText = studentNameElement.textContent.split(" – ");
+    let currentRoll = currentText[0];
+    let currentName = currentText[1];
+
+    let newRoll = prompt('Enter the new roll number:', currentRoll);
+    let newName = prompt('Enter the new name:', currentName);
+
+    if (newRoll !== null && newRoll !== '' && newName !== null && newName !== '') {
+        studentNameElement.textContent = newRoll + " – " + newName;
+    }
+}
+ 
+// Highlight students
+function changeListStyle() {
+    let students = document.querySelectorAll('.student-item');
+    students.forEach(student => {
+        student.classList.toggle('highlight');
+    });
+}
+ 
+// Highlight button
+let changeStyleButton = document.createElement('button');
+changeStyleButton.textContent = 'Highlight Students';
+changeStyleButton.addEventListener('click', changeListStyle);
+document.body.appendChild(changeStyleButton);
+
+
+// Update student count
+function updateStudentCount() {
+    let total = document.querySelectorAll('.student-item').length;
+    document.getElementById('student-count').textContent = "Total students: " + total;
+}
+
+</script>
+
+</body>
+</html>

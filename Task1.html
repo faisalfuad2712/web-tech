@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student List DOM Practice</title>
+  <link rel="stylesheet" href="dom.css" />
+</head>
+<body>
+  <h1>Student List</h1>
+
+  <!-- Student Form -->
+  <form id="student-form">
+    <label for="student-roll">Roll No.:</label>
+    <input type="text" id="student-roll" placeholder="Enter roll no.">
+
+    <label for="student-name">Student Name:</label>
+    <input type="text" id="student-name" placeholder="Enter student name">
+
+    <button type="submit">Add Student</button>
+  </form>
+
+  <!-- Student List -->
+  <ul id="student-list">
+    <!-- New students will be added here -->
+  </ul>
+
+  <script>
+    // 1. Event listener for form submission
+    document.getElementById('student-form').addEventListener('submit', addStudent);
+
+    // 2. Add student function
+    function addStudent(event) {
+      event.preventDefault(); // Prevent page reload
+
+      // 3. Get roll + name from inputs
+      const rollInput = document.getElementById('student-roll');
+      const nameInput = document.getElementById('student-name');
+
+      const studentRoll = rollInput.value.trim();
+      const studentName = nameInput.value.trim();
+
+      if (studentRoll === '' || studentName === '') {
+        alert('Please enter both roll number and student name');
+        return;
+      }
+
+      // 4. Create new list item
+      const li = document.createElement('li');
+      li.classList.add('student-item');
+
+      // Store values on the li (easy to edit later)
+      li.dataset.roll = studentRoll;
+      li.dataset.name = studentName;
+
+      // 5. Create span to show "roll – name"
+      const span = document.createElement('span');
+      span.textContent = `${studentRoll} – ${studentName}`;
+
+      // 6. Create Edit button
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.classList.add('btn-edit');
+      editButton.addEventListener('click', function () {
+        editStudent(li, span);
+      });
+
+      // 7. Create Delete button
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.classList.add('btn-delete');
+      deleteButton.addEventListener('click', function () {
+        deleteStudent(li);
+      });
+
+      // Put span and buttons inside li
+      li.appendChild(span);
+      li.appendChild(editButton);
+      li.appendChild(deleteButton);
+
+      // Add li to the student list
+      document.getElementById('student-list').appendChild(li);
+
+      // Clear input fields
+      rollInput.value = '';
+      nameInput.value = '';
+    }
+
+    // 8. Delete a student
+    function deleteStudent(studentElement) {
+      studentElement.remove();
+    }
+
+    // 9. Edit a student's roll + name
+    function editStudent(studentElement, displayElement) {
+      const currentRoll = studentElement.dataset.roll || '';
+      const currentName = studentElement.dataset.name || '';
+
+      const newRoll = prompt('Enter the new roll number:', currentRoll);
+      if (newRoll === null) return; // user cancelled
+
+      const newName = prompt('Enter the new name:', currentName);
+      if (newName === null) return; // user cancelled
+
+      const rollClean = newRoll.trim();
+      const nameClean = newName.trim();
+
+      if (rollClean === '' || nameClean === '') {
+        alert('Roll number and name cannot be empty.');
+        return;
+      }
+
+      studentElement.dataset.roll = rollClean;
+      studentElement.dataset.name = nameClean;
+      displayElement.textContent = `${rollClean} – ${nameClean}`;
+    }
+
+    // 10. Change list style (highlight)
+    function changeListStyle() {
+      const students = document.querySelectorAll('.student-item');
+      students.forEach(student => {
+        student.classList.toggle('highlight');
+      });
+    }
+
+    // 11. Add Highlight button dynamically
+    const changeStyleButton = document.createElement('button');
+    changeStyleButton.textContent = 'Highlight Students';
+    changeStyleButton.addEventListener('click', changeListStyle);
+    document.body.appendChild(changeStyleButton);
+  </script>
+</body>
+</html>

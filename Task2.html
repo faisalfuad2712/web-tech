@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List DOM Practice</title>
+    <link rel="stylesheet" href="dom.css">
+</head>
+<body>
+    <h1>Student List</h1>
+ 
+    <!-- Student Form -->
+    <form id="student-form">
+        <label for="student-roll">Roll No:</label>
+        <input type="text" id="student-roll" placeholder="Enter roll number">
+
+        <label for="student-name">Student Name:</label>
+        <input type="text" id="student-name" placeholder="Enter student name">
+        <button type="submit">Add Student</button>
+    </form>
+ 
+    <!-- Student List -->
+    <ul id="student-list">
+        <!-- New students will be added here -->
+    </ul>
+
+    <!-- Total Student Count -->
+    <p id="student-count">Total students: 0</p>
+ 
+<script>
+
+// 1. Event listener for form submission
+document.getElementById('student-form').addEventListener('submit', addStudent);
+ 
+// 2. Add student function
+function addStudent(event) {
+    event.preventDefault(); // Prevent page reload
+ 
+    // 3. Get student roll and name from input
+    let studentRoll = document.getElementById('student-roll').value;
+    let studentName = document.getElementById('student-name').value;
+ 
+    if (studentRoll === '' || studentName === '') {
+        alert('Please enter roll number and student name');
+        return;
+    }
+ 
+    // 4. Create new list item
+    let li = document.createElement('li');
+    li.classList.add('student-item');
+ 
+    // 5. Create span to show student roll and name
+    let span = document.createElement('span');
+    span.textContent = studentRoll + " – " + studentName;
+ 
+    // 6. Create Edit button
+    let editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.classList.add('btn-edit');
+    editButton.addEventListener('click', function () {
+        editStudent(li, span);
+    });
+ 
+    // Create Delete button
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add('btn-delete');
+    deleteButton.addEventListener('click', function () {
+        deleteStudent(li);
+    });
+ 
+    // Put span and buttons inside li
+    li.appendChild(span);
+    li.appendChild(editButton);
+    li.appendChild(deleteButton);
+ 
+    // 7. Add li to the student list
+    document.getElementById('student-list').appendChild(li);
+ 
+    // Update student count
+    updateStudentCount();
+
+    // Clear input fields
+    document.getElementById('student-roll').value = '';
+    document.getElementById('student-name').value = '';
+}
+ 
+// 8. Delete a student
+function deleteStudent(studentElement) {
+    studentElement.remove();
+    updateStudentCount(); // Update count after delete
+}
+ 
+// 9. Edit a student's roll and name
+function editStudent(studentElement, studentNameElement) {
+
+    let currentText = studentNameElement.textContent.split(" – ");
+    let currentRoll = currentText[0];
+    let currentName = currentText[1];
+
+    let newRoll = prompt('Enter the new roll number:', currentRoll);
+    let newName = prompt('Enter the new name:', currentName);
+
+    if (newRoll !== null && newRoll !== '' && newName !== null && newName !== '') {
+        studentNameElement.textContent = newRoll + " – " + newName;
+    }
+}
+ 
+// 10. Change list style (highlight)
+function changeListStyle() {
+    let students = document.querySelectorAll('.student-item');
+    students.forEach(student => {
+        student.classList.toggle('highlight');
+    });
+}
+ 
+// 11. Add Highlight button dynamically
+let changeStyleButton = document.createElement('button');
+changeStyleButton.textContent = 'Highlight Students';
+changeStyleButton.addEventListener('click', changeListStyle);
+document.body.appendChild(changeStyleButton);
+
+
+// 12. Function to update total student count
+function updateStudentCount() {
+    let total = document.querySelectorAll('.student-item').length;
+    document.getElementById('student-count').textContent = "Total students: " + total;
+}
+
+</script>
+
+</body>
+</html>
