@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Fetcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .student-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        .student-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Fetch Student Information</h1>
+    <button id="fetchButton">Fetch Student Data</button>
+    <div id="studentInfo" class="student-info"></div>
+</div>
+
+<script>
+    document.getElementById('fetchButton').addEventListener('click', function() {
+        // Create a new AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'fetch_student_data.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        // Set up the callback for the response
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Parse the JSON response
+                var studentData = JSON.parse(xhr.responseText);
+
+                // Display the student information
+                var output = `
+                    <p><strong>Name:</strong> ${studentData.name}</p>
+                    <p><strong>ID:</strong> ${studentData.id}</p>
+                    <p><strong>Department:</strong> ${studentData.department}</p>
+                    <p><strong>CGPA:</strong> ${studentData.cgpa}</p>
+                `;
+                document.getElementById('studentInfo').innerHTML = output;
+            } else {
+                document.getElementById('studentInfo').innerHTML = '<p>Error fetching data</p>';
+            }
+        };
+
+        // Send the request
+        xhr.send();
+    });
+</script>
+
+</body>
+</html>
